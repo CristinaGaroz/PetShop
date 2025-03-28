@@ -1,0 +1,36 @@
+{# Plantilla que muestra el main del registro #}
+{% extends 'general.html.twig' %}
+
+{% block title %}Registro{% endblock %}
+
+{% block content %}
+            <main class="mainRegistro">
+                <div >
+                    <h1><b>REGISTRARSE</b></h1>
+                    {{ form_start(form) }}
+                    <p>{{ form_widget(form.nombre, {'attr': {'placeholder': 'Nombre', 'class': 'textr'}}) }}</p>
+                    <p>{{ form_widget(form.correo, {'attr': {'placeholder': 'Correo', 'class': 'textr'}}) }}</p>
+                    <p>{{ form_widget(form.clave, {'attr': {'placeholder': 'Contraseña' , 'class': 'textr'}}) }}</p>
+                    <p>{{ form_widget(form.confirmarClave, {'attr': {'placeholder': 'Confirmar Contraseña', 'class': 'textr'}}) }}</p>
+                    <p>{{ form_widget(form.enviar, {'attr': {'class': 'botones'}}) }}</p>
+                    
+                        {% if errorContraseña %}
+                            <p class="error">{{ errorContraseña }}</p>
+                        {% endif %}
+
+                        {% if errorCorreo %}
+                            <p class="error">{{ errorCorreo }}</p>
+                        {% endif %}
+
+                        {% if existeCorreo %}
+                            <p class="error">{{ existeCorreo }}</p>
+                        {% endif %}
+
+                    {{ form_end(form) }}
+                </div>
+        </main>   
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/registro.css') }}">
+{% endblock %}

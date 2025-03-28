@@ -1,0 +1,35 @@
+{# Plantilla que muestra el main del producto individual #}
+{% extends 'general.html.twig' %}
+{% block title %}Ver Producto{% endblock %}
+
+{% block content %}
+
+    <main class="mainVerProducto">
+        {% if producto is defined %}
+            <div class="boxVerProducto">
+                <div class="img-container">
+                    <img src="{{ asset('IMG/' ~ producto.getImg()) }}" alt="{{ producto.getNombre() }}" class="product-img">
+                </div>
+
+                <div class="productDetalles">
+                    <h5 class="productNombre">{{ producto.nombre }}</h5>
+                    <p>{{ producto.marca|upper }}</p>
+                    <p>{{ producto.descripcion }}</p>
+                    <p class="productPrecio">{{ producto.precio }} €</p>
+                    <form action="{{ path('añadirProducto', {'idProducto': producto.getIdProducto()}) }}" method="POST">
+                        <p>Cantidad: <input type="number" class="ProductCantidad" name="cantidad" value="1" min="1"></p>
+                        <button type="submit" class="boxBotonVerProducto">Añadir al Carrito</button>
+                    </form> 
+                </div>
+            </div>
+        {% endif %}
+    </main>
+
+{% endblock %}
+
+{% block stylesheets %}
+   <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    {# <link rel="stylesheet" href="../IMG"> #}
+{% endblock %}
+

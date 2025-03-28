@@ -1,0 +1,96 @@
+{# Plantilla que muestra el main del resumen del pedido #}
+{% extends 'general.html.twig' %}
+
+{% block title %}Resumen pedido{% endblock %}
+
+{% block content %}
+    <main class="mainResumenPedido">
+        <div class="box-1 container">
+            <div class="box-resumen">
+                <div class="tituloCarrito">
+                    <h1 class="productos-top" >Resumen de la compra</h1>
+                </div>
+                {% if carrito is empty %}
+                    <p>El carrito está vacío.</p>
+                {% else %}
+                    <ul>
+                        {% for item in carrito %}
+                            <div class=" cardResumenPedido" style="width: 12rem; min-height: 10rem;">
+                                <img src="{{ asset('IMG/' ~ item.producto.getImg()) }}" alt="{{ item.producto.getNombre() }}" class="card-img-top">
+                                <div class="card-body cardResumenPedidoBody">
+                                    <h5 class="card-title">{{ item.producto.nombre }}</h5>
+                                    <p class="card-text marca">{{ item.producto.marca }}</p>
+                                    <p>Cantidad: {{ item.cantidad }}</p>
+                                    <p class="card-text marca">Precio unidad: {{ item.producto.precio }}</p>
+                                    <p class="card-text">Total: {{ item.producto.precio * item.cantidad }} €</p>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </ul>
+                {% endif %} 
+            </div>
+
+            <div class="box-direccion">
+                <h2>Dirección de envío:</h2>
+                {% if direccion %}
+                    <p>C/ {{ direccion.calle }} {{ direccion.numero }}, {{ direccion.piso }}</p>
+                    <p>{{ direccion.ciudad }}, {{ direccion.provincia }} {{ direccion.cp }}</p>
+                    <p class="p-direcciones"><b> {{direccion.remitente}}</b></p>
+                {% else %}
+                    <p>No se ha seleccionado ninguna dirección.</p>
+                {% endif %}
+                <ul>
+                    {% if direcciones is defined %}
+                        {% for usuarioDireccion in direcciones %}
+                            <li>
+                                <form method="POST" action="{{ path('seleccionarDireccion') }}">
+                                    <input type="hidden" name="idDireccion" value="{{ usuarioDireccion.getDireccion().getId() }}">
+                                    <button type="submit" class="botonDirecciones">
+                                        <p> C/ {{ usuarioDireccion.getDireccion().getCalle() }}, {{ usuarioDireccion.getDireccion().getNumero() }},
+                                        {{ usuarioDireccion.getDireccion().getPiso() }}</p>
+                                        <p>{{ usuarioDireccion.getDireccion().getCiudad() }}, {{ usuarioDireccion.getDireccion().getProvincia() }} {{ usuarioDireccion.getDireccion().getCp() }}</p>
+                                        <p><b>{{ usuarioDireccion.getDireccion().getRemitente()}}</b></p>
+                                    </button>
+                                </form>
+
+                                {% if direccion is not null and usuarioDireccion.getDireccion().getId() != direccion.getId() %}
+                                <form method="POST" action="{{ path('eliminarDireccion') }}">
+                                    <input type="hidden" name="idDireccion" value="{{ usuarioDireccion.getDireccion().getId() }}">
+                                    <button type="submit" class="papelera"><i class="bi bi-trash"></i></button>
+                                </form>
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    {% endif %}
+                </ul>
+                <form action="{{ path('nuevaDireccion') }}" method="POST">
+                    <button type="submit" class="btn botonAD">Añadir dirección</button>
+                </form>
+            </div>
+        </div>
+
+        {% if carrito is not empty %}
+            <div class="box-total container">
+                <h3> Total pedido: {{ total }} €</h3>
+                <form action="{{ path('confirmarPedido') }}" method="POST">
+                    <button type="submit" class="btn btn-success ">Confirmar pedido</button>
+                </form>
+                {% for errorDireccion in app.flashes('error') %}
+                    <div class="error">
+                    <i class="bi bi-exclamation-triangle "></i> {{ errorDireccion }}
+                    </div>
+            </div>
+                {% endfor %}
+                {% for errorStock in app.flashes('errorstock') %}
+                    <div class="error">
+                        <i class="bi bi-exclamation-triangle"></i> {{ errorStock }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </main>
+{% endblock %}
+
+{% block stylesheets %}
+ 
+{% endblock %}

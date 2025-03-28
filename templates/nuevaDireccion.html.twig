@@ -1,0 +1,34 @@
+{# Plantilla que muestra el main para añadir una nueva dirección #}
+{% extends 'general.html.twig' %}
+
+{% block title %}Nueva dirección{% endblock %}
+
+{% block content %}
+<main class="mainNuevaDireccion">
+  <div> 
+    <h1 class="productos-top">Añadir una nueva direccion:</h1> 
+  </div>
+        <div class="box-ad">
+            {{ form_start(form) }}
+            <p>Pais: {{ form_widget(form.pais, {'attr': {'class': 'textdp'}}) }}</p>
+            <p>Provincia: {{ form_widget(form.provincia, {'attr': {'class': 'textdp'}}) }}</p>
+            <p>Ciudad: {{ form_widget(form.ciudad, {'attr': {'class': 'textdp'}}) }}</p>
+            <p>Código postal: {{ form_widget(form.cp, {'attr': {'class': 'textdp'}}) }}</p>
+            <p>Calle: {{ form_widget(form.calle, {'attr': {'class': 'textdp'}}) }}</p>
+            <p>Número: {{ form_widget(form.numero, {'attr': {'class': 'textdp', 'pattern': '[0-9]*'}}) }}</p>
+            <p>Piso: {{ form_widget(form.piso, {'attr': {'class': 'textdp'}}) }}</p>
+            <p>remitente: {{ form_widget(form.remitente, {'attr': {'class': 'textdp'}}) }}</p>
+            <p>{{ form_widget(form.guardar, {'attr': {'class': 'botones boton-direcciones'}}) }}</p>
+            {{ form_end(form) }}
+    </div>
+        {% if form.cp.vars.errors|length > 0 %}
+          <div class="errorCP">
+        <p>{{ form_errors(form.cp) }}</p>
+        {% endif %}
+    </div>
+    </main>
+    {% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/carrito.css') }}"> 
+{% endblock %}

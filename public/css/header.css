@@ -1,0 +1,212 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Cambria;
+  }
+        /* HEADER- SECTION */
+  header{
+    background-color: rgb(242, 222, 181);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000; 
+  }
+  .header-section{
+    display: grid;
+    grid-template-columns: 25% 50% 25%;
+    height: 100px;
+  }
+  .iconos{
+    display: flex;
+    justify-content:flex-start;
+    align-items: center;
+  }
+  .buscador{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #busqueda{
+    width: 300px;
+    height: 50px;
+    border-radius: 30px;
+    border:solid 2px ;
+    border-color: rgb(52, 167, 140);
+    background-color: rgb(242, 222, 181);
+  }
+  .lupa{
+    border: none;
+    background-color: rgb(242, 222, 181);
+  }
+  .iconoLupa{
+    width: 45px;
+    height: 45px;
+  }
+
+  .logo{
+    height: 100px;
+  }
+
+  .iconos ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  }
+
+.iconos li {
+  text-align: center;
+  margin: 0 10px;
+}
+
+.iconos li a {
+  text-decoration: none;
+  color: #333;
+}
+
+.iconos li i {
+  font-size: 24px;
+  display: block;
+}
+
+.iconos li a:hover i {
+color: rgb(52, 167, 140);
+}
+
+/* NAV */
+.navegador{
+background-color: rgb(52, 167, 140);
+}
+.navegador {
+position: fixed;
+top: 100px; 
+width: 100%;
+z-index:99; 
+}
+
+.nav-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex; 
+    min-height: 50px;
+    margin-left: 30px;
+  }
+
+  .nav-section li {
+    padding: 15px;
+  }
+
+  .nav-section li:last-child {
+    margin-right: 0;
+  }
+
+  .nav-section ul ul {
+    display: none; 
+    position: absolute;
+    background-color:#fff;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  }
+
+  .nav-section ul li {
+    display: block;
+  }
+  .nav-section ul li a {
+    color: rgb(65, 64, 64);
+    
+    text-decoration: none;
+    font-size: larger;
+  }
+
+  .nav-section ul li:hover {
+    background-color: #fff;
+  }
+
+  .nav-section li:hover > ul {
+    display: block; 
+  }
+
+  .nav-section ul ul li a {
+    padding: 12px 16px;
+    display: block;
+    text-decoration: none;
+    color: #333;
+  }
+
+  .nav-section ul ul li a:hover {
+    background-color: #ddd; 
+  }
+
+.lupa{
+  font-size: 25px;
+}
+
+.logo{
+  font-size: 70px;
+}
+
+.letras-logo {
+  font-size: 50px;
+  text-decoration: none;
+  color: rgb(52, 167, 140);
+  text-shadow: 
+      2px 2px 5px rgba(0, 0, 0, 0.3), 
+      4px 4px 10px rgba(0, 0, 0, 0.1),
+      6px 6px 15px rgba(0, 0, 0, 0.05);
+}
+/* SECTION */
+
+.seccion1{
+display: flex;
+}
+
+/*  */
+.menu-usuario {
+  list-style-type: none;
+  position: relative; 
+  padding: 10px;
+}
+
+.menu-usuario .submenu-usuario {
+  display: none; 
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 999;
+  background-color: #fff;
+  padding: 0;
+  border: 1px solid #ccc;
+}
+.submenu-usuario{
+  width: 200px;
+}
+.submenu-usuario li {
+  padding: 10px;
+}
+
+.submenu-usuario li:hover {
+  background-color: #ddd;
+}
+
+.menu-usuario:hover .submenu-usuario {
+  display: block; 
+}
+
+.contador-productos {
+  background-color: tomato; 
+  color: #ffffff; 
+  font-size: 13px; 
+  padding: 5px 10px; 
+  border-radius: 100%; 
+  position: absolute; 
+  top: 5px; 
+  right:230px ; 
+
+}
+
+
+
+
+

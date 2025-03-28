@@ -1,0 +1,92 @@
+{# Plantilla que muestra el main principal, que es lo primero que muestra la web al acceder a ella #}
+{% extends 'general.html.twig' %}
+
+{% block content %}
+    <div id="content">
+        <div class="seccion1">
+    <!-- MAIN -->
+    <main class="col-9 mainPrincipal" >
+    {% if productoTop is defined %}
+    <h1 class="productos-top"><img src="IMG/fuego.png" class="iconoFuego">Productos Top</h1>
+    <div class="hola" >
+          <ul class="ulProductos">
+            {% for productoT in productoTop %}
+            
+              <li>
+              <a href="{{ path('verProducto', {'id': productoT.getIdProducto()}) }}">
+                  <div class="card" style="width: 11rem; min-height: 26rem;">
+                    <img src="{{ asset('IMG/' ~ productoT.getImg()) }}" alt="{{ productoT.getNombre() }}" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <p class="card-text marca">{{ productoT.getMarca()|upper }}</p> {# |upper lo muestra en mayusculas aunque en la bdd este en minúsculas #}
+                        <h5 class="card-title">{{ productoT.getNombre() }}</h5>
+                        <p class="card-text"><b>{{ productoT.getPrecio() }}€</b></p>
+                      <form action="{{ path('añadirProducto', {'idProducto': productoT.getIdProducto()}) }}" method="POST">
+                      <button type="submit" class="btn btn-color">Añadir al Carrito</button>
+                      </form> 
+                      </div>
+                  </div>
+                  </a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+        {# RECOMENDADO PERRO #}
+        {% if recomendadoPerro is defined %}
+    <h1 class="productos-top"><img src="IMG/perro.png" class="iconoFuego"> Recomendado para tu perro</h1>
+    <div class="hola" >
+          <ul class="ulProductos">
+            {% for proRecPerro in recomendadoPerro %}
+              <li>
+              <a href="{{ path('verProducto', {'id': proRecPerro.getIdProducto()}) }}">
+                  <div class="card" style="width: 11rem; min-height: 26rem">
+                    <img src="{{ asset('IMG/' ~ proRecPerro.getImg()) }}" alt="{{ proRecPerro.getNombre() }}" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <p class="card-text marca">{{ proRecPerro.getMarca()|upper }}</p> {# |upper lo muestra en mayusculas aunque en la bdd este en minúsculas #}
+                        <h5 class="card-title">{{ proRecPerro.getNombre() }}</h5>
+                        <p class="card-text"><b>{{ proRecPerro.getPrecio() }}€</b></p>
+                        <form action="{{ path('añadirProducto', {'idProducto': proRecPerro.getIdProducto()}) }}" method="POST">
+                      <button type="submit" class="btn btn-color">Añadir al Carrito</button>
+                      </form> 
+                      </div>
+                  </div>
+                  </a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+        {# RECOMENDADO GATO #}
+        {% if recomendadoGato is defined %}
+    <h1 class="productos-top"><img src="IMG/gato.png" class="iconoFuego"> Recomendado para tu gato</h1>
+    <div class="hola" >
+          <ul class="ulProductos">
+            {% for proRecGato in recomendadoGato %}
+            
+              <li>
+              <a href="{{ path('verProducto', {'id': proRecGato.getIdProducto()}) }}">
+                  <div class="card" style="width: 11rem; min-height: 26rem">
+                    <img src="{{ asset('IMG/' ~ proRecGato.getImg()) }}" alt="{{ proRecGato.getNombre() }}" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <p class="card-text marca">{{ proRecGato.getMarca()|upper }}</p> {# |upper lo muestra en mayusculas aunque en la bdd este en minúsculas #}
+                        <h5 class="card-title">{{ proRecGato.getNombre() }}</h5>
+                        <p class="card-text"><b>{{ proRecGato.getPrecio() }}€</b></p>
+                        <form action="{{ path('añadirProducto', {'idProducto': proRecGato.getIdProducto()}) }}" method="POST">
+                      <button type="submit" class="btn btn-color">Añadir al Carrito</button>
+                      </form> 
+                      </div>
+                  </div>
+                  </a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+    
+    {# <h1>Productos de {{ tipoAnimal|capitalize }}{% if categoria %} - {{ categoria|capitalize }}{% endif %}</h1> #}
+
+
+    </main>
+  </div>
+  </div>
+{% endblock %}

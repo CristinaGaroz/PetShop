@@ -1,0 +1,33 @@
+{# Plantilla que muestra el main del login #}
+{% extends 'general.html.twig' %}
+
+{% block title %}Iniciar Sesión{% endblock %}
+
+{% block content %}
+    <main class="mainLogin">
+        <form action="{{ path('login') }}" method="post">
+                <div>
+                    <h1 class= "titulo" ><b>INICIAR SESIÓN</b></h1>
+                    <p><input  type="text" id="username" name="_username" placeholder="Correo" class="text"></p>
+                    <p><input type="password" id="password" name="_password" placeholder="Contraseña" class="text">
+                    <p><input  type="submit" name="enviar" value="Iniciar Sesion" class="botones"></p>
+                    <p >¿No tienes cuenta? <a href="{{ path('registro') }}" class="enlace"></i>Registrate</a></p> 
+                        {% if error %}
+                            <p class="error">{{ error }}</p>
+                        {% endif %} 
+                </div>
+        </form>
+        {% for flash_message in app.flashes('success') %}
+            <div class="alert alert-success box-pulgar">
+            <i class="bi bi-hand-thumbs-up-fill pulgar"></i>{{ flash_message }}
+            </div>
+        {% endfor %}
+
+    </main>
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+{% endblock %}
+
+

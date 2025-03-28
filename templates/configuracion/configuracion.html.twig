@@ -1,0 +1,17 @@
+{% extends 'general.html.twig' %}
+
+{% block title %}Configuración{% endblock %}
+
+{% block content %}
+  <main class="mainConfiguracion container-fluid">
+    <h1 class=" productos-top">Configuración <i class="bi bi-gear-fill"></i></h1>
+      <div class="botones-confi">
+        <p class="botones"><a href="{{ path('datosPersonales') }}"><i class="bi bi-person"></i> Datos Personales </a></p> 
+        <p class="botones"><a href="{{ path('cargarSaldo') }}"><i class="bi bi-credit-card"></i> Cargar saldo</a></p> 
+      </div>
+  </main>
+{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/configuración.css') }}">
+{% endblock %}

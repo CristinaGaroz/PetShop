@@ -1,0 +1,57 @@
+{% extends 'general.html.twig' %}
+
+{% block title %}Cargar Saldo{% endblock %}
+
+{% block content %}
+    <main class="mainCargarSaldo">
+        <div class="cargarSaldo">
+            <h5><b>Carga tu saldo</b></h5>
+                {{ form_start(form3) }}
+                    <p>Nº tarjeta:</p>
+                    <p> {{ form_widget(form3.tarjeta, {'attr': {'class': 'textdp',  'maxlength': '16', 'pattern': '\\d*'}}) }}</p>
+                    <p>Caducidad: </p>
+                        <div class="box-caducidad">
+                            <p>{{ form_widget(form3.mes, {'attr': {'class': 'textdp boxPequeña', 'placeholder': 'mm','maxlength': '2', 'pattern': '\\d*'}}) }}
+                            {{ form_widget(form3.anio, {'attr': {'class': 'textdp boxPequeña', 'placeholder': 'aa','maxlength': '4', 'pattern': '\\d*'}}) }}</p>
+                        </div>
+                    <p>CVV:</p>
+                    <p> {{ form_widget(form3.CVV, {'attr': {'class': 'textdp boxPequeña','maxlength': '3', 'pattern': '\\d*'}}) }}</p>
+                    <p>Cantidad:</p>
+                    <p> {{ form_widget(form3.saldo, {'attr': {'class': 'textdp boxPequeña'}}) }}</p>
+                    <p>{{ form_widget(form3.cargar, {'attr': {'class': 'botones boton-cargarSaldo'}}) }}</p>
+                {{ form_end(form3) }} 
+        </div>
+
+            {% if form3.tarjeta.vars.errors|length > 0 %}
+                <div class="error">
+                    {{ form_errors(form3.tarjeta) }}
+                </div>
+            {% endif %}
+
+            {% if form3.mes.vars.errors|length > 0 %}
+                <div class="error">
+                    {{ form_errors(form3.mes) }}
+                </div>
+            {% endif %}
+
+            {% if form3.anio.vars.errors|length > 0 %}
+                <div class="error">
+                    {{ form_errors(form3.anio) }}
+                </div>
+    {% endif %}
+
+    {% for flash_message in app.flashes('warning') %}
+            <div class="alert alert-warning box-tiangulo">
+            <i class="bi bi-exclamation-triangle-fill triangulo"></i></i>{{ flash_message }}
+            </div>
+        {% endfor %}
+
+            <div class="enlaces">
+                <p class="botones" ><a href="{{ path('datosPersonales') }}"></i>Datos Personales</a></p>
+            </div>
+    </main>
+{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/configuración.css') }}">
+{% endblock %}

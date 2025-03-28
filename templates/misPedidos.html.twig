@@ -1,0 +1,36 @@
+{# Plantilla que muestra el main de mis pedidos #}
+{% extends 'general.html.twig' %}
+
+{% block title %}Mis pedidos{% endblock %}
+
+{% block content %}
+    <main class="mainCarrito">
+        <h1 class="container productos-top">Mis pedidos <i class="bi bi-bag-check-fill"></i></h1>
+        {% if detallesPedidos is not empty %}
+            {% set idPedidoAnterior = null %}
+            {% for detallePedido in detallesPedidos %}
+                {% if detallePedido.idPedido != idPedidoAnterior %}
+                    {% if idPedidoAnterior is not null %}
+                        <hr>
+                    {% endif %}
+                    <div class="container">
+                        <h3>ID del pedido: {{ detallePedido.idPedido }}</h3>
+                        <div class="productos">
+                            <h4>Productos del pedido:</h4>
+                            <ul>
+                {% endif %}
+                                <li>{{ detallePedido.nombre_producto }} - Cantidad: {{ detallePedido.unidades }}</li>
+                {% set idPedidoAnterior = detallePedido.idPedido %}
+            {% endfor %}
+                        </ul>
+                    </div>
+            {% else %}
+                <p>No hay pedidos para mostrar.</p>
+            {% endif %}
+        </div>
+    </main>
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/carrito.css') }}">
+{% endblock %}

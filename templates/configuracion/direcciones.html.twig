@@ -1,0 +1,33 @@
+{% extends 'general.html.twig' %}
+
+{% block title %}Direcciones{% endblock %}
+
+{% block content %}
+    <main class="mainDatosPersonales">
+        <div class="direcciones">
+            <h5><b>Modifica tu dirección</b></h5>
+            
+            {% if form1 is defined %} 
+                {{ form_start(form1) }}
+                <p>Pais: {{ form_widget(form1.pais, {'attr': {'class': 'textdp'}}) }}</p>
+                <p>Provincia: {{ form_widget(form1.provincia, {'attr': {'class': 'textdp'}}) }}</p>
+                <p>Ciudad: {{ form_widget(form1.ciudad, {'attr': {'class': 'textdp'}}) }}</p>
+                <p>Código postal: {{ form_widget(form1.cp, {'attr': {'class': 'textdp'}}) }}</p>
+                <p>Calle: {{ form_widget(form1.calle, {'attr': {'class': 'textdp'}}) }}</p>
+                <p>Número: {{ form_widget(form1.numero, {'attr': {'class': 'textdp'}}) }}</p>
+                <p>Piso: {{ form_widget(form1.piso, {'attr': {'class': 'textdp'}}) }}</p>
+                <p>{{ form_widget(form1.modificar, {'attr': {'class': 'botones boton-direcciones'}}) }}</p>
+                {{ form_end(form1) }} 
+            {% endif %} 
+        </div>
+
+        <div class="enlaces">
+            <p class="botones"><a href="{{ path('datosPersonales') }}">Datos personales</a></p>  
+            <p class="botones"><a href="{{ path('cargarSaldo') }}">Cargar saldo</a></p>
+        </div>
+    </main>
+{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/configuración.css') }}">
+{% endblock %}

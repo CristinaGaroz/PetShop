@@ -1,0 +1,25 @@
+/*FOOTER*/
+footer {
+  padding: 20px;
+    bottom: 0;
+    background-color: rgb(52, 167, 140);
+    height: 300px;
+    width: 100%;
+    text-align: center;
+  }
+  footer p{
+    color: #000000;
+  }
+  footer h4{
+    font-size: 30px;
+    color: rgb(242, 222, 181);
+  }
+  .list-unstyled li a{
+  text-decoration: none;
+  font-size: 17px;
+  color: rgb(0, 0, 0);
+  }
+
+  .list-unstyled li:hover a{
+    color:rgb(242, 222, 181);
+  }

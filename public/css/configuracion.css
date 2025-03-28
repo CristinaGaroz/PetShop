@@ -1,0 +1,140 @@
+/* Configuracion */
+.mainConfiguracion{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: rgb(228, 221, 209);
+    margin-top: 60px;
+    min-height: 400px;
+}
+.mainConfiguracion p{
+
+    width: 250px;
+
+}
+.botones-confi{
+    max-width: 300px;
+}
+.botones-confi p{
+    margin-bottom: 10px;
+}
+
+.titulo{
+    display: flex;
+    text-align: center;
+}
+
+/* DATOS PERSONALES */
+
+.mainDatosPersonales{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.datosPersonales{
+    width: 300px; 
+    padding: 20px; 
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+    background-color: #f9f9f9; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+}
+.datosPersonales p{
+    margin-bottom: 10px;
+}
+.textdp{
+    border: none;
+    border-radius: 5px;
+    width: 170px; 
+}
+.boton-datosPersonales{
+    float: right;
+}
+.datosPersonales h5{
+    text-align: center;
+    color: black;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+.enlaces{
+    margin-left: 900px;
+    
+}
+.enlaces p{
+    margin-bottom: 10px;
+}
+
+a{ 
+    text-decoration: none;
+    color: black;
+}
+
+/* DIRECCION */
+.direcciones{
+    width: 400px; 
+    padding: 20px; 
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+    background-color: #f9f9f9; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+    padding-left: 30px;
+}
+.direcciones p{
+    margin-bottom: 10px;
+}
+
+.boton-direcciones{
+    float: right;
+}
+.direcciones h5{
+    text-align: center;
+    color: black;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+/* METODO DE PAGO */
+.mainCargarSaldo {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+}
+.cargarSaldo{
+width: 300px;
+    padding: 25px; 
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+    background-color: #f9f9f9; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+}
+.cargarSaldo h5{
+    text-align: center;
+    color: black;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+.box-caducidad{
+    display: flex;
+}
+.boxPequeña {
+    width: 100px; 
+}
+p {
+    margin-bottom: 1px; 
+}
+.boton-cargarSaldo{
+    float: right;
+    width: 80px;
+}
+.triangulo{
+
+    font-size: 30px;
+}
+.box-tiangulo{
+    position: absolute;
+    margin-top: 370px;
+    
+}

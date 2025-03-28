@@ -1,0 +1,37 @@
+{# Plantilla que muestra el main del buscador #}
+
+{% extends 'general.html.twig' %}
+
+{% block title %}Buscador{% endblock %}
+
+{% block content %}
+    <main class="mainBuscador" >
+        {% if productosBuscador is empty %}
+        <p>No se encontraron productos para la búsqueda "{{ busqueda }}".</p>
+        {% else %}
+            <div class="boxTituloBuscador">
+                <h5 class="tituloBuscador productos-top ">Resultados para: <b>{{ busqueda }}</b></h5>
+            </div>
+            <div class="hola" >
+                <ul class="ulProductos">
+                    {% for productoB in productosBuscador %}
+                    <li><a href="{{ path('verProducto', {'id': productoB.getIdProducto()}) }}">
+                        <div class="card" style="width: 15rem; min-height: 28rem; ;">
+                            <img src="{{ asset('IMG/' ~ productoB.getImg()) }}" alt="{{ productoB.getNombre() }}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <p class="card-text marca">{{ productoB.getMarca()|upper }}</p> {# |upper lo muestra en mayusculas aunque en la bdd este en minúsculas #}
+                                <h5 class="card-title">{{ productoB.getNombre() }}</h5>
+                                <p class="card-text"><b>{{ productoB.getPrecio() }}€</b></p>
+                                <form action="{{ path('añadirProducto', {'idProducto': productoB.getIdProducto()}) }}" method="POST">
+                                    <button type="submit" class="btn btn-color boton">Añadir al Carrito</button>
+                                </form>
+                            </div>
+                        </div>
+                    </a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    </main>
+{% endblock %}
+

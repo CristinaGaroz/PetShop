@@ -1,0 +1,26 @@
+security:  
+    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    providers:
+        mascotas:
+            entity:
+                class: App\Entity\Usuario
+                property: correo
+    encoders:
+        App\Entity\Usuario:
+            algorithm: plaintext
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            anonymous: true
+            form_login:
+                login_path: login
+                check_path: login
+                default_target_path: principal
+            provider: mascotas
+            logout:
+                path: /logout
+                target: /login
+    access_control:
+            

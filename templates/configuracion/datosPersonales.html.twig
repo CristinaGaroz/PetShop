@@ -1,0 +1,29 @@
+{% extends 'general.html.twig' %}
+
+{% block title %}Datos personales{% endblock %}
+
+{% block content %}
+    <main class="mainDatosPersonales">
+        <div class="datosPersonales">
+        <h5><b>Actualiza tus datos personales</b></h5>
+            {{ form_start(form) }}
+                <p>Nombre: {{ form_widget(form.nombre, {'attr': {'class': 'textdp'}}) }}</p>
+                <p>Correo: {{ form_widget(form.correo, {'attr': {'class': 'textdp'}}) }}</p>
+                <p>Clave: {{ form_widget(form.clave, {'attr': {'class': 'textdp'}}) }}</p>
+                <p>Telefono: {{ form_widget(form.telefono, {'attr': {'class': 'textdp'}}) }}</p>
+                <p>{{ form_widget(form.enviar, {'attr': {'class': 'botones boton-datosPersonales'}}) }}</p>
+            {{ form_end(form) }}
+            {% if errorCorreo %}
+                <div class="error">{{ errorCorreo }}</div>
+            {% endif %}
+        </div>
+        <div class="enlaces">
+            
+            <p class="botones" ><a href="{{ path('cargarSaldo') }}"></i>Cargar saldo </a></p>
+        </div>
+</main>
+{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/configuración.css') }}">
+{% endblock %}

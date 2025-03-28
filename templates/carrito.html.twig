@@ -1,0 +1,57 @@
+{# Plantilla que muestra el main del carrito #}
+{% extends 'general.html.twig' %}
+
+{% block title %}Carrito{% endblock %}
+
+{% block content %}
+    <main class="mainCarrito">
+        {% if carrito is not empty %}
+        <div class="tituloCarrito">
+            <h1 class="productos-top" >Mi carrito <i class="bi bi-cart3"></i></h1>
+            <form action="{{ path('vaciarCarrito') }}" method="POST">
+            <button type="submit" class="btn botonVC "><i class="bi bi-cart-x"></i> Vaciar carrito</button>
+            </form>
+        </div>
+        {% endif %}
+
+        {% if carrito is empty %}
+            <p>El carrito está vacío.</p>
+        {% else %}
+            <ul>
+                {% for item in carrito %}
+                    <div class=" cardCarrito" style="width: 17rem; min-height: 16rem;">
+                        <img src="{{ asset('IMG/' ~ item.producto.getImg()) }}" alt="{{ item.producto.getNombre() }}" class="card-img-top">
+                        <div class="card-body cardCarritoBody">
+                            <h5 class="card-title">{{ item.producto.nombre }}</h5>
+                            <p class="card-text marca">{{ item.producto.marca }}</p>
+                            <form action="{{ path('actualizarCantidad', {'idProducto': item.producto.idProducto}) }}" method="POST">
+                                <p>Cantidad: <input type="number" class="caja-cantidad" name="cantidad" value="{{ item.cantidad }}" min="1"><button type="submit" class="boton-AC">Actualizar Cantidad</button></p>
+                            </form>
+                            <p class="card-text marca">Precio unidad: {{ item.producto.precio }}</p>
+                            <p class="card-text">Total: {{ item.producto.precio * item.cantidad }} €</p>
+                            <form action="{{ path('eliminarProducto', {'idProducto': item.producto.idProducto}) }}" method="POST">
+                                <button type="submit" class="btn btn-danger botonEliminar"><i class="bi bi-trash"></i> Eliminar</button>
+                            </form>
+                        </div>
+                    </div>
+                {% endfor %}
+            </ul>
+            
+        {% endif %}
+        
+        {% if carrito is not empty %}
+            <div class="totalCarrito">
+                <h3>El total de tu carrito es: {{ total }} €</h3>
+                <form action="{{ path('resumenPedido') }}" method="POST">
+                    <button type="submit" class="btn btn-success botonComprar"></i>Comprar</button>
+                </form>
+            </div>
+        {% endif %}
+
+        
+    </main>
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/carrito.css') }}">
+{% endblock %}
